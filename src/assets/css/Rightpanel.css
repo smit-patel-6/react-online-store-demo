@@ -1,0 +1,55 @@
+.rightpanal{
+    margin-top: 10px !important;
+}
+
+.pos p,.pos a{
+    margin: 3px;
+    cursor: pointer;
+}
+
+.posactive{
+    text-decoration: none;
+    color: #f14d54;
+}
+
+.loginform{
+    margin-top:10px;
+}
+
+.loginform h2{
+    font-size: 32px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.form{
+    justify-content: center !important;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 15%;
+    margin-top: 2%;
+}
+
+.form h6{
+    font-weight: bold;
+}
+
+.form p{
+    font-size: 15px;
+    color: #838383;
+}
+
+.form-group .form-control{
+    width: 400px !important;
+}
+
+.form-group label{
+    font-size: 15px;
+}
+
+.loginbtn{
+    width: 100px;
+    height: 45px;
+    background-color: #f14d54 !important;
+    color: white !important;
+    margin-top: 1%;
+}

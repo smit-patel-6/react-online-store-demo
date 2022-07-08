@@ -1,0 +1,25 @@
+.lefttitle{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #414141;
+}
+
+.reg{
+    font-size: 15px;
+    color: #838383;
+}
+
+.regpoints li{
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    color: #212121;
+}
+
+.createbtn{
+    width: 220px;
+    height: 45px;
+    background-color: #f14d54 !important;
+    color: white !important;
+    margin-top: 20%;
+    font-family: 'Roboto', sans-serif;
+}
