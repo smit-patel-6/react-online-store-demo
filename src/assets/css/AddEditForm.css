@@ -1,0 +1,27 @@
+.savebtn{
+    width: 100px !important;
+    height: 40px !important;
+    background-color: #80BF32 !important;
+    margin-right: 1%;
+    margin-top: 3%;
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cnlbtn{
+    width: 100px !important;
+    height: 40px !important;
+    background-color: #f14d54 !important;
+    margin-right: 1%;
+    margin-top: 3%;
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-control{
+    font-family: 'Roboto', sans-serif;
+}
+
+.col-6 label{
+    font-family: 'Roboto', sans-serif;
+}

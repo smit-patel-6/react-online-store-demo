@@ -1,0 +1,19 @@
+.carttitle{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.productblock{
+    width:400px;
+}
+
+.orderbtn{
+    background-color: #f14d54 !important;
+    color: white !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.classtext{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}

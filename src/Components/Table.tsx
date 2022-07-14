@@ -1,48 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cloneDeep from "lodash/cloneDeep";
 import throttle from "lodash/throttle";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import '../assets/css/Table.css';
-
-interface data_type {
-    name: string
-    parentId: string
-    campaignType: string
-    status: string
-    channel: string
-    action: string
-}
-
-const allData = [
-    {
-        name: "Sale",
-        parentId: "12",
-        campaignType: "Push",
-        status: "Failed",
-        channel: "android",
-        action: ":"
-    },
-    {
-        name: "Sale2",
-        parentId: "123",
-        campaignType: "Inapp",
-        status: "Failed",
-        channel: "iOS",
-        action: ":"
-    }]
+import { useNavigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch} from 'react-redux';
+import { initType,productsType } from '../Reducers/reducers';
+import { removeProduct } from '../Actions/actions';
 
 const tableHead = {
     firstname: "First Name",
     lastname: "Last Name",
-    campaignType: "Type",
-    status: "Status",
-    channel: "Channel",
-    action: "Actions"
+    category: "Category",
+    description: "Description",
 };
 
 const Table = () => {
-    const countPerPage = 10;
+
+    const nevigate = useNavigate();
+    const dispatch = useDispatch()
+    const state = useSelector<initType,any>((state) => state)
+    const allData = state.reducer.products
+    const countPerPage = 5;
     const [value, setValue] = React.useState("");
     const [currentPage, setCurrentPage] = React.useState(1);
     const [collection, setCollection] = React.useState(
@@ -54,7 +34,7 @@ const Table = () => {
             setCurrentPage(1);
             const data = cloneDeep(
                 allData
-                    .filter((item) => item.name.toLowerCase().indexOf(query) > -1)
+                    .filter((item:productsType) => item.firstname.toLowerCase().indexOf(query) > -1)
                     .slice(0, countPerPage)
             );
             setCollection(data);
@@ -67,7 +47,7 @@ const Table = () => {
         } else {
             searchData.current(value);
         }
-    }, [value]);
+    }, [value,allData]);
 
     const updatePage = (p: number) => {
         setCurrentPage(p);
@@ -75,6 +55,16 @@ const Table = () => {
         const from = to - countPerPage;
         setCollection(cloneDeep(allData.slice(from, to)));
     };
+
+    const editProduct = (product:productsType) => {
+        nevigate('/productform',{
+            state:product
+        })
+    }
+
+    const deleteProduct = (product:productsType) => {
+        dispatch(removeProduct(product));
+    }
 
     const tableRows = (rowData: any) => {
         const { key, index } = rowData;
@@ -86,13 +76,13 @@ const Table = () => {
         return (
             <tr key={index}>
                 {columnData}
-                <td><button className="btn btn-warning">Edit</button></td>
-                <td><button className="btn btn-danger">Delete</button></td>
+                <td><button className="btn btn-warning" onClick={() => editProduct(key)}>Edit</button></td>
+                <td><button className="btn btn-danger" onClick={() => deleteProduct(key)}>Delete</button></td>
             </tr>);
     };
 
     const tableData = () => {
-        return collection.map((key, index) => tableRows({ key, index }));
+        return collection.map((key:productsType, index:any) => tableRows({ key, index }));
     };
 
     const headRow = () => {
@@ -111,7 +101,7 @@ const Table = () => {
                         className="form-control searchproduct"
                         onChange={(e) => setValue(e.target.value)}
                     />
-                    <button className='btn addprobtn'>Add Product</button>
+                    <Link to='/productform' className='btn addprobtn'>Add Product</Link>
                 </div>
                 <table className='table table-hover mt-4'>
                     <thead>

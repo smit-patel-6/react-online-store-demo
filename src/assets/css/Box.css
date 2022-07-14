@@ -1,0 +1,30 @@
+.box{
+    width:500px;
+}
+.cartimg{
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+
+.cartprodname{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.qty{
+    width: 40px !important;
+    height: 35px;
+}
+
+.commonbtn{
+    background-color: #f14d54 !important;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.removebtn{
+    font-family: 'Roboto', sans-serif;
+    color:#f14d54 !important;
+    cursor: pointer;
+}
