@@ -1,16 +1,17 @@
-import React from 'react';
-// import './App.css';
+import React, { useEffect } from 'react';
 import Routing from './Routing';
-import { store } from './store';
-import { Provider } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { fetchUsers } from './Actions/actions';
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(fetchUsers())
+  },[])
   return (
-    <Provider store={store}>
       <div className="App">
         <Routing />
       </div>
-    </Provider>
   );
 }
 

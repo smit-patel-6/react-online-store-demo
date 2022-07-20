@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/css/Box.css';
 import { cartType, initType, productsType } from '../Reducers/reducers';
 import { useSelector, useDispatch } from 'react-redux';
-import { addQuantity, subQuantity } from '../Actions/actions';
+import { addQuantity, removeFromCart, subQuantity } from '../Actions/actions';
 
 interface propsType {
     product:cartType
@@ -31,6 +31,12 @@ const Box = ({product}:propsType) => {
         })
     }
 
+    const removeProduct = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>,product:cartType) => {
+        e.preventDefault();
+        console.log('done')
+        dispatch(removeFromCart(product));
+    }
+
     return (
         <>
             <span className="box mt-3">
@@ -54,7 +60,10 @@ const Box = ({product}:propsType) => {
                                 <button className='btn commonbtn' onClick={(e) => addQty(e,product)}><span> + </span></button>
                             </div>
                             <div className="col-5">
-                                <h6 className='removebtn'>Remove</h6>
+                                <a 
+                                className='removebtn'
+                                onClick={(e) => removeProduct(e,product)}
+                                >Remove</a>
                             </div>
                         </div>
                     </div>

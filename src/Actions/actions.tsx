@@ -1,6 +1,12 @@
 
 import { cartType, productsType, usersType } from "../Reducers/reducers";
 
+export const fetchUsers = () => {
+    return {
+        type: 'FETCH_USERS'
+    }
+}
+
 export const addUser = (user:usersType) => {
     return {
         type: 'ADD_USER',
@@ -52,5 +58,12 @@ export const subQuantity = (product:any) => {
 export const placeOrder = () => {
     return {
         type: 'PLACE_ORDER'
+    }
+}
+
+export const removeFromCart = (product:cartType) => {
+    return {
+        type: 'REMOVE_FROM_CART',
+        payload: product
     }
 }

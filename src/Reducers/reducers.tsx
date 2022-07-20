@@ -99,11 +99,17 @@ export const initialState: initType = {
 
 export const reducer = (state: initType = initialState, action: actionType) => {
     switch (action.type) {
+        case 'SET_USERS':
+            return {
+                users:[...state.users,...action.payload],
+                products:[...state.products],
+                cart:[...state.cart]
+            }
         case 'ADD_USER':
             return {
                 users: [...state.users, action.payload],
                 products: [...state.products],
-                cart: []
+                cart: [...state.cart]
             }
 
         case 'UPDATE_PRODUCT':
@@ -123,14 +129,14 @@ export const reducer = (state: initType = initialState, action: actionType) => {
             return {
                 users: [...state.users],
                 products: [...state.products, action.payload],
-                cart: []
+                cart: [...state.cart]
             }
 
         case 'REMOVE_PRODUCT':
             return {
                 users: [...state.users],
                 products: [...state.products.filter((value) => value.id !== action.payload.id)],
-                cart: []
+                cart: [...state.cart]
             }
 
         case 'ADD_TO_CART':
@@ -199,6 +205,13 @@ export const reducer = (state: initType = initialState, action: actionType) => {
                 users:[...state.users],
                 products:[...state.products],
                 cart:[]
+            }
+        
+        case "REMOVE_FROM_CART":
+            return {
+                users:[...state.users],
+                products:[...state.products],
+                cart:[...state.cart.filter((item) => item.id !== action.payload.id)]
             }
 
         default:
