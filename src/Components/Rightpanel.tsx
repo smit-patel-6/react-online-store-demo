@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/css/Rightpanel.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { initType, usersType } from '../Reducers/reducers';
@@ -7,6 +7,15 @@ import { useNavigate } from 'react-router-dom';
 const Rightpanel = () => {
 
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        let login = localStorage.getItem('login')
+        
+        if(login === 'true'){
+            navigate('/');
+        }
+    },[])
+
     const mystate = useSelector<initType, any>((state) => state)
     const userList = mystate.reducer.users;
 
@@ -21,7 +30,10 @@ const Rightpanel = () => {
             if (item.email === email && item.password === password){
                 setError(false)
                 alert('Login Successful')
-                navigate('/products')
+                localStorage.setItem('email',email)
+                localStorage.setItem('password',password)
+                localStorage.setItem('login',"true")
+                navigate('/')
             } else {
                 setError(true)
             }

@@ -16,10 +16,16 @@ const Card: React.FC<cardPropsType> = (props) => {
     const { id, firstname, lastname, category, description, price, imgUrl } = props.product;
 
     const addtocart = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>,product:productsType) => {
-        e.preventDefault();
-        dispatch(AddToCart(product))
-        alert('Product Successfully Added to Cart');
-        navigate('/cart')
+        let login = localStorage.getItem('login')
+        if(login !== 'true'){
+            alert('Login Required');
+            navigate('/login')
+        } else{
+            e.preventDefault();
+            dispatch(AddToCart(product))
+            alert('Product Successfully Added to Cart');
+            navigate('/cart')
+        }
     }
 
     return (

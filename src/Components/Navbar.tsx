@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/css/Navbar.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -8,6 +8,17 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
 
     const navigate = useNavigate();
+    const [value,setValue] = useState('')
+
+    useEffect(()=>{
+        let login = localStorage.getItem('login')
+        if(login !== 'true'){
+            setValue('Login')
+        }else{
+            setValue('Logout')
+        }
+    },[])
+
     const state = useSelector<initType,any>((state) => state)
     const cart = state.reducer.cart.length;
 
@@ -15,11 +26,25 @@ const Navbar = () => {
         e.preventDefault();
         navigate('/cart');
     }
+
+    const logFunction = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>,value:string) => {
+        e.preventDefault();
+        if (value === 'Login'){
+            navigate('/login')
+        } else{
+            localStorage.removeItem('login')
+            localStorage.removeItem('email')
+            localStorage.removeItem('password')
+            alert('Logout successfully..!!')
+            navigate('/login')
+        }
+    }
+
     return (
         <>
             <div className='navbar'>
                 <div className='nav1'>
-                    <Link to='/'>Login</Link>
+                    <Link to='/login' onClick={(e) => logFunction(e,value)}>{value}</Link>
                     <span>|</span>
                     <Link to='/registration'>Register</Link>
                     <button onClick={(e) => cartPage(e)} className='btn btn-outline-secondary'>

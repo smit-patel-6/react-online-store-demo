@@ -6,18 +6,19 @@ import Product from './Pages/Product';
 import AddEditForm from './Pages/AddEditForm';
 import ProductList from './Pages/ProductList';
 import Cart from './Pages/Cart';
+import ProtectedRoute from './Components/ProtectedRoute';
 
 const Routing = () => {
   return (
     <>
       <Router>
           <Routes>
-            <Route path='/cart' element={<Cart />}/>
-            <Route path='/productlist' element={<ProductList />}/>
-            <Route path='/productform' element={<AddEditForm />}/>
-            <Route path='/products' element={<Product />}/>
+            <Route path='/cart' element={<ProtectedRoute Component={Cart} />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/productform' element={<ProtectedRoute Component={AddEditForm} />}/>
+            <Route path='/products' element={ <ProtectedRoute Component={Product}/> } />
             <Route path='/registration' element={<Registration />}/>
-            <Route path='/' element={<Login />}/>
+            <Route path='/' element={<ProductList />}/>
           </Routes>
       </Router>
     </>
