@@ -101,7 +101,7 @@ const Table = () => {
                         className="form-control searchproduct"
                         onChange={(e) => setValue(e.target.value)}
                     />
-                    <Link to='/productform' className='btn addprobtn'>Add Product</Link>
+                    <Link to='/productform' data-testid='addprodbtn' className='btn addprobtn'>Add Product</Link>
                 </div>
                 <table className='table table-hover mt-4'>
                     <thead>

@@ -11,7 +11,7 @@ import ProtectedRoute from './Components/ProtectedRoute';
 const Routing = () => {
   return (
     <>
-      <Router>
+      {/* <Router> */}
           <Routes>
             <Route path='/cart' element={<ProtectedRoute Component={Cart} />}/>
             <Route path='/login' element={<Login />}/>
@@ -20,7 +20,7 @@ const Routing = () => {
             <Route path='/registration' element={<Registration />}/>
             <Route path='/' element={<ProductList />}/>
           </Routes>
-      </Router>
+      {/* </Router> */}
     </>
   )
 }

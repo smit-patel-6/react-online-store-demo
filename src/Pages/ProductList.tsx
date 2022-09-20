@@ -16,45 +16,51 @@ const ProductList = () => {
     const products = state.reducer.products;
 
     const countPerPage = 5;
-    const [currentPage,setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1)
     const [collection, setCollection] = useState(
         cloneDeep(products.slice(0, countPerPage))
     )
-    const updatePage = (pageNumber:number) => {
+    const updatePage = (pageNumber: number) => {
         setCurrentPage(pageNumber);
         const to = countPerPage * pageNumber
         const from = to - countPerPage
         setCollection(
-            cloneDeep(products.slice(from,to))
+            cloneDeep(products.slice(from, to))
         )
     }
+    const cards = (
+        collection.map((item: productsType) =>
+            <div className='col-3 cardcol'>
+                <Card
+                    product={item}
+                />
+            </div>
+        )
+    )
+
+    const pagination = (
+        <Pagination
+            pageSize={countPerPage}
+            current={currentPage}
+            onChange={updatePage}
+            total={products.length}
+            className="pagination mt-3"
+        />
+    )
+
     return (
         <>
-            <Navbar />
+            
             <div className="productlist">
                 <div className="d-flex justify-content-center productlisttitle">
-                    <h1>Product List</h1>
+                    <h1 data-testid="title">Product List</h1>
                 </div>
                 <div className="container">
                     <div className="row">
-                        {
-                            collection.map((item: productsType) =>
-                                <div className='col-3 cardcol'>
-                                    <Card 
-                                    product={item}
-                                    />
-                                </div>
-                            )
-                        }
+                        {cards}
                     </div>
                     <div className="d-flex justify-content-center">
-                        <Pagination 
-                        pageSize={countPerPage}
-                        current={currentPage}
-                        onChange={updatePage}
-                        total={products.length}
-                        className="pagination mt-3"
-                        />
+                        {pagination}
                     </div>
                 </div>
             </div>

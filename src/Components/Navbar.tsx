@@ -3,11 +3,9 @@ import '../assets/css/Navbar.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { initType } from '../Reducers/reducers';
-import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-    const navigate = useNavigate();
     const [value,setValue] = useState('')
 
     useEffect(()=>{
@@ -17,26 +15,20 @@ const Navbar = () => {
         }else{
             setValue('Logout')
         }
-    },[])
+    },[value])
 
     const state = useSelector<initType,any>((state) => state)
     const cart = state.reducer.cart.length;
 
-    const cartPage =(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-        navigate('/cart');
-    }
-
     const logFunction = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>,value:string) => {
         e.preventDefault();
-        if (value === 'Login'){
-            navigate('/login')
-        } else{
+        if (value !== 'Login'){
             localStorage.removeItem('login')
             localStorage.removeItem('email')
             localStorage.removeItem('password')
             alert('Logout successfully..!!')
-            navigate('/login')
+            setValue('Login')
+            window.location.reload();
         }
     }
 
@@ -44,15 +36,16 @@ const Navbar = () => {
         <>
             <div className='navbar'>
                 <div className='nav1'>
-                    <Link to='/login' onClick={(e) => logFunction(e,value)}>{value}</Link>
+                    { value === 'Login'? (<Link to='/login' className='navbtn'>Login</Link>):(<Link to='/login' onClick={(e) => logFunction(e,value)} className='navbtn'>Logout</Link>)}
+                    
                     <span>|</span>
-                    <Link to='/registration'>Register</Link>
-                    <button onClick={(e) => cartPage(e)} className='btn btn-outline-secondary'>
+                    <Link to='/registration' className='navbtn'>Register</Link>
+                    <Link to='/cart'  className='shopbtn btn btn-outline-secondary'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg>
                         <span>{cart}</span>Cart
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="navbar2">

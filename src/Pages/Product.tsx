@@ -6,9 +6,9 @@ import Table from '../Components/Table'
 const Product = () => {
     return (
         <>
-            <Navbar />
+            
             <div className="productpage">
-                <h2 className='d-flex justify-content-center mt-3 producttitle'>Product Page</h2>
+                <h2 data-testid="producttitle" className='d-flex justify-content-center mt-3 producttitle'>Product Page</h2>
                 <Table />
             </div>
         </>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../Components/Navbar';
 import '../assets/css/Registration.css';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -39,7 +38,6 @@ const Registration = () => {
 
     return (
         <>
-            <Navbar />
             <div className='registrationfrom'>
                 <div className='pos d-flex justify-content-center'>
                     <Link to='/' className='homelink'>Home</Link>

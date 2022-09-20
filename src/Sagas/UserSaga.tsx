@@ -1,9 +1,9 @@
-import axios from "axios";
-import { put,takeEvery} from 'redux-saga/effects'
+import { put,takeEvery} from 'redux-saga/effects';
+import { getUsers } from '../Services/UserService'
 
 function* fetchUsers(){
     let data:any = [];
-    yield axios.get('http://127.0.0.1:8000/users/').then((response:any) => {
+    yield getUsers().then((response:any) => {
         data = response.data.users;
     })
 

@@ -10,13 +10,14 @@
     display: flex;
 }
 
-.nav1 a,.nav1 span{
+.navbtn,.nav1 span{
     margin: 10px !important;
     font-size: 14px;
     color: #f14d54 !important;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
+    padding-top: 2%;
 }
 
 .btn{
@@ -57,4 +58,14 @@
     max-width: 129px;
     color: white !important;
     background-color: #f14d54 !important;
+}
+
+.shopbtn{
+    font-size: 14px;
+    color: #f14d54 !important;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    padding-top: 2%;
+    margin: auto !important;
 }

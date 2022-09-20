@@ -32,7 +32,7 @@ const Cart = () => {
 
     return (
         <>
-            <Navbar />
+            
             <div className="cart">
                 <div className="d-flex justify-content-center">
                     <h1 className='carttitle'>Cart Page</h1>

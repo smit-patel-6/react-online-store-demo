@@ -55,25 +55,27 @@ const Rightpanel = () => {
                 <div className='form-group'>
                     <label htmlFor="email">Email Address*</label>
                     <input 
+                    data-testid='email'
                     type="email" 
                     className='form-control' 
                     onChange={(e) => setEmail(e.target.value)}
-                    required />
+                     />
                 </div>
                 <div className='form-group'>
                     <label htmlFor="pass">Password</label>
                     <input 
+                    data-testid='password'
                     type="password" 
                     className='form-control'
                     onChange={(e) => setPassword(e.target.value)}
-                    required />
+                     />
                 </div>
                 {
                     error?(
                         <p className='text-danger mt-2'>Invalid Email and Password</p>
                     ):(<></>)
                 }
-                <input type="submit" value="Login" className='btn loginbtn' />
+                <input type="submit" value="Login" data-testid="login_btn" className='btn loginbtn' />
             </form>
         </div>
     </div>
