@@ -37,7 +37,7 @@ const Card: React.FC<cardPropsType> = (props) => {
                     <p className="card-text des">{description}</p>
                         <span>MRP</span><p>₹{price}</p>
                     <div className="d-flex justify-content-center">
-                        <button data-testid='addtocartbtn' onClick={(e) => addtocart(e,props.product)} className="btn mt-3 cartbtn">ADD TO CART</button>
+                        <button data-testid='addtocartbtn' onClick={(e) => addtocart(e,props.product)} className="btn mt-3 text-white cartbtn">ADD TO CART</button>
                     </div>
                 </div>
             </div>

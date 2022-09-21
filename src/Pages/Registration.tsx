@@ -44,7 +44,7 @@ const Registration = () => {
                     <p>&gt;</p>
                     <a className='posactive'>Create an Account</a>
                 </div>
-                <h2 className='d-flex justify-content-center logtitle mt-3'>Login or Create an Account</h2>
+                <h2 data-testid="regTitle" className='d-flex justify-content-center logtitle mt-3'>Login or Create an Account</h2>
                 <div className="container">
                     <form className='regform' onSubmit={createUser}>
                         <h5>Personal Information</h5>
@@ -58,6 +58,7 @@ const Registration = () => {
                                         type="text"
                                         name="fname"
                                         id="fname"
+                                        placeholder='Enter First Name'
                                         className='form-control'
                                         onChange={(e) => setFirstName(e.target.value)}
                                         required />
@@ -70,6 +71,7 @@ const Registration = () => {
                                         type="text"
                                         name="lname"
                                         id="lname"
+                                        placeholder='Enter Last Name'
                                         className='form-control'
                                         onChange={(e) => setLastName(e.target.value)}
                                         required />
@@ -81,6 +83,7 @@ const Registration = () => {
                             <input
                                 type="email"
                                 name="email"
+                                placeholder='Enter Email'
                                 id="email"
                                 className='form-control'
                                 onChange={(e) => setEmail(e.target.value)}
@@ -93,6 +96,7 @@ const Registration = () => {
                                     <label htmlFor="pass">Password*</label>
                                     <input
                                         type="password"
+                                        placeholder='Enter Password'
                                         name="pass"
                                         id="pass"
                                         className='form-control'
@@ -106,6 +110,7 @@ const Registration = () => {
                                     <input
                                         type="password"
                                         name="cpass"
+                                        placeholder='Confirm Password'
                                         id="cpass"
                                         className='form-control'
                                         onChange={(e) => setConfirmPassword(e.target.value)}
@@ -115,10 +120,10 @@ const Registration = () => {
                         </div>
                         {
                             passError ? (
-                                <p className='text-danger mt-2'>{passError}</p>
+                                <p data-testid="regError" className='text-danger mt-2'>{passError}</p>
                             ) : (<></>)
                         }
-                        <input type="submit" value="Register" className='btn regbtn mt-3' />
+                        <input type="submit" data-testid='regbtn' value="Register" className='btn regbtn mt-3' />
                     </form>
                 </div>
             </div>

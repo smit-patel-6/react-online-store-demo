@@ -30,7 +30,7 @@ const ProductList = () => {
     }
     const cards = (
         collection.map((item: productsType) =>
-            <div className='col-3 cardcol'>
+            <div className='col-3 cardcol' key={item.id}>
                 <Card
                     product={item}
                 />

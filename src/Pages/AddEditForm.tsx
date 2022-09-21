@@ -27,7 +27,7 @@ const AddEditForm = () => {
   const title = (state ? <h1>Edit Product</h1> : <h1>Add Product</h1>);
 
   const options = (
-    <select name="category" id="category" className='form-control mt-2' onChange={(e) => setCtg(e.target.value)}>
+    <select data-testid='category' name="category" id="category" className='form-control mt-2' onChange={(e) => setCtg(e.target.value)}>
       <option value="">Select Category</option>
       {
         categories.map((value) =>
@@ -89,6 +89,7 @@ const AddEditForm = () => {
               <div className="col-6">
                 <label htmlFor="firstname">First Name*</label>
                 <input
+                  data-testid='fname'
                   type="text"
                   name="fname"
                   id="fname"
@@ -101,6 +102,7 @@ const AddEditForm = () => {
               <div className="col-6">
                 <label htmlFor="lastname">Last Name*</label>
                 <input
+                  data-testid='lname'
                   type="text"
                   name="fname"
                   id="fname"
@@ -152,8 +154,8 @@ const AddEditForm = () => {
                 />
               </div>
             </div>
-            <input type="submit" value="Save" className='btn savebtn' />
-            <input type="submit" value="Cancel" className='btn cnlbtn' />
+            <input data-testid="saveBtn" type="submit" value="Save" className='btn savebtn' />
+            <input data-testid="cancleBtn" type="submit" value="Cancel" className='btn cnlbtn' />
           </form>
         </div>
       </div>
